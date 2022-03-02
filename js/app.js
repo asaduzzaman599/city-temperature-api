@@ -1,0 +1,1 @@
+const API_KEY =`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=c37f3551d980d0899f6e95a99a8a56c8&units=metric`
