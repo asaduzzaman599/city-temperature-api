@@ -24,13 +24,17 @@ const searchTemperature =async () =>{
 }
 
 const displayWeatherCondition = (weatherData) =>{
-    setInnerText('city',weatherData.name);
+    if(weatherData){
+        setInnerText('city',weatherData.name);
     setInnerText('temperature',Math.round(weatherData.main.temp));
     setInnerText('condition',weatherData.weather[0].main);
 
     const iconUrl = `http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`
     
     document.getElementById('weather-icon').setAttribute('src',iconUrl);
+    }{
+        alert('No data found')
+    }
 }
 
 const setInnerText = (id, text) => {
