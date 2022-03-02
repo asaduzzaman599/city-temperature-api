@@ -13,7 +13,6 @@ const searchTemperature =async () =>{
 
             const res = await fetch(url);
             const data = await res.json();
-            console.log(data);
             displayWeatherCondition(data);
             
         }catch(e){
@@ -24,7 +23,7 @@ const searchTemperature =async () =>{
 }
 
 const displayWeatherCondition = (weatherData) =>{
-    if(weatherData){
+    if(weatherData.cod < 400){
         setInnerText('city',weatherData.name);
     setInnerText('temperature',Math.round(weatherData.main.temp));
     setInnerText('condition',weatherData.weather[0].main);
@@ -32,7 +31,7 @@ const displayWeatherCondition = (weatherData) =>{
     const iconUrl = `http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`
     
     document.getElementById('weather-icon').setAttribute('src',iconUrl);
-    }{
+    }else{
         alert('No data found')
     }
 }
